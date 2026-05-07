@@ -1,0 +1,67 @@
+name: Update O&M Index
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install packages
+        run: pip install yfinance pandas
+
+      - name: Create data
+        run: |
+          python <<EOF
+          import yfinance as yf
+          import pandas as pd
+          import json
+
+          stocks = [
+              "2267.T",
+              "2897.T",
+              "2502.T",
+              "9616.T",
+              "4204.T",
+              "8111.T",
+              "4901.T",
+              "3687.T"
+          ]
+
+          data = yf.download(
+              stocks,
+              period="6mo"
+          )["Close"]
+
+          data["O&M"] = data.mean(axis=1)
+
+          result = {
+              "labels": data.index.strftime("%Y-%m-%d").tolist(),
+              "values": data["O&M"].round(2).tolist()
+          }
+
+          with open("data.json", "w") as f:
+              json.dump(result, f)
+          EOF
+
+      - name: Commit files
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add data.json
+          git commit -m "update data" || echo "no changes"
+          git push
