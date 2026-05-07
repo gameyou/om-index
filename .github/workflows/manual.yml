@@ -7,10 +7,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  update:
+  update-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -45,7 +50,6 @@ jobs:
 
           tickers = list(stocks.values())
           name_by_ticker = {ticker: name for name, ticker in stocks.items()}
-
           base_start = "2025-01-01"
 
           raw = yf.download(
@@ -58,9 +62,7 @@ jobs:
           )
 
           prices = raw["Close"]
-
-          prices = prices[tickers]
-          prices = prices.dropna(how="any")
+          prices = prices[tickers].dropna(how="any")
 
           if prices.empty:
               raise Exception("株価データを取得できませんでした")
@@ -148,3 +150,15 @@ jobs:
           git add data.json
           git commit -m "Update O&M market-cap weighted index" || echo "No changes"
           git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v4
