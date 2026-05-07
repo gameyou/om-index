@@ -22,8 +22,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install packages
-        run: |
-          pip install yfinance pandas
+        run: pip install yfinance pandas
 
       - name: Create data.json
         run: |
@@ -44,17 +43,52 @@ jobs:
               "フィックスターズ": "3687.T"
           }
 
-          raw = yf.download(
-              list(stocks.values()),
-              period="2y",
+          tickers = list(stocks.values())
+          base_start = "2025-01-01"
+
+          prices = yf.download(
+              tickers,
+              start=base_start,
               interval="1d",
-              auto_adjust=False,
+              auto_adjust=True,
               progress=False,
               threads=True
-          )
+          )["Close"].dropna(how="any")
 
-          close = raw["Close"].dropna(how="any")
-          om_daily = close.mean(axis=1)
+          if prices.empty:
+              raise Exception("株価データを取得できませんでした")
+
+          shares = {}
+
+          for name, ticker in stocks.items():
+              t = yf.Ticker(ticker)
+              s = None
+
+              try:
+                  s = t.fast_info.get("shares")
+              except Exception:
+                  pass
+
+              if not s:
+                  try:
+                      s = t.info.get("sharesOutstanding")
+                  except Exception:
+                      pass
+
+              if not s:
+                  raise Exception(f"{name} の発行済株式数を取得できません: {ticker}")
+
+              shares[ticker] = float(s)
+
+          shares_series = pd.Series(shares)
+
+          market_caps = prices.mul(shares_series, axis=1)
+          total_market_cap = market_caps.sum(axis=1)
+
+          base_date = total_market_cap.index[0]
+          base_value = total_market_cap.iloc[0]
+
+          om_daily = total_market_cap / base_value * 100
           om_weekly = om_daily.resample("W-FRI").last().dropna()
           om_monthly = om_daily.resample("ME").last().dropna()
 
@@ -64,12 +98,30 @@ jobs:
                   "values": [round(float(v), 2) for v in series.tolist()]
               }
 
+          latest_date = prices.index[-1]
+          latest_caps = market_caps.loc[latest_date]
+          latest_total = latest_caps.sum()
+
+          weights = {
+              stocks[ticker]: round(float(latest_caps[ticker] / latest_total * 100), 2)
+              for ticker in tickers
+          }
+
           jst = timezone(timedelta(hours=9))
 
           result = {
               "name": "O&M Index",
+              "method": "Market-cap weighted index, base=100",
+              "base_start": base_start,
+              "base_date": base_date.strftime("%Y-%m-%d"),
+              "base_value": 100,
               "updated_at": datetime.now(jst).strftime("%Y-%m-%d %H:%M:%S JST"),
               "stocks": list(stocks.keys()),
+              "shares": {
+                  stocks[ticker]: int(shares[ticker])
+                  for ticker in tickers
+              },
+              "latest_weights_percent": weights,
               "daily": convert(om_daily),
               "weekly": convert(om_weekly),
               "monthly": convert(om_monthly)
@@ -84,5 +136,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add data.json
-          git commit -m "Update O&M data" || echo "No changes"
+          git commit -m "Update O&M market-cap weighted index" || echo "No changes"
           git push
