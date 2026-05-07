@@ -48,6 +48,17 @@ jobs:
               "フィックスターズ": "3687.T"
           }
 
+          shares = {
+              "2267.T": 292104288,
+              "2897.T": 287057156,
+              "2502.T": 1462866952,
+              "9616.T": 87730913,
+              "4204.T": 403705986,
+              "8111.T": 136740731,
+              "4901.T": 1205328866,
+              "3687.T": 32252858
+          }
+
           tickers = list(stocks.values())
           name_by_ticker = {ticker: name for name, ticker in stocks.items()}
           base_start = "2025-01-01"
@@ -56,46 +67,31 @@ jobs:
               tickers,
               start=base_start,
               interval="1d",
-              auto_adjust=True,
+              auto_adjust=False,
               progress=False,
-              threads=True
+              threads=False
           )
 
           prices = raw["Close"]
-          prices = prices[tickers].dropna(how="any")
+
+          if isinstance(prices, pd.Series):
+              prices = prices.to_frame()
+
+          prices = prices.reindex(columns=tickers)
+          prices = prices.dropna(how="any")
 
           if prices.empty:
               raise Exception("株価データを取得できませんでした")
 
-          shares = {}
+          market_caps = pd.DataFrame(index=prices.index)
 
-          for name, ticker in stocks.items():
-              t = yf.Ticker(ticker)
-              s = None
+          for ticker in tickers:
+              market_caps[ticker] = prices[ticker] * shares[ticker]
 
-              try:
-                  s = t.fast_info.get("shares")
-              except Exception:
-                  pass
-
-              if not s:
-                  try:
-                      s = t.info.get("sharesOutstanding")
-                  except Exception:
-                      pass
-
-              if not s:
-                  raise Exception(f"{name} の発行済株式数を取得できません: {ticker}")
-
-              shares[ticker] = float(s)
-
-          shares_series = pd.Series(shares)
-
-          market_caps = prices.mul(shares_series, axis=1)
           total_market_cap = market_caps.sum(axis=1)
 
           base_date = total_market_cap.index[0]
-          base_value = total_market_cap.iloc[0]
+          base_value = total_market_cap.loc[base_date]
 
           om_daily = total_market_cap / base_value * 100
           om_weekly = om_daily.resample("W-FRI").last().dropna()
@@ -108,14 +104,31 @@ jobs:
               }
 
           latest_date = prices.index[-1]
+          latest_value = om_daily.loc[latest_date]
+
           latest_caps = market_caps.loc[latest_date]
           latest_total = latest_caps.sum()
 
           weights = {}
+          components = []
 
           for ticker in tickers:
-              w = latest_caps[ticker] / latest_total * 100
-              weights[name_by_ticker[ticker]] = round(float(w), 2)
+              name = name_by_ticker[ticker]
+              base_price = prices.loc[base_date, ticker]
+              latest_price = prices.loc[latest_date, ticker]
+              latest_cap = market_caps.loc[latest_date, ticker]
+
+              weights[name] = round(float(latest_cap / latest_total * 100), 2)
+
+              components.append({
+                  "name": name,
+                  "ticker": ticker,
+                  "shares": int(shares[ticker]),
+                  "base_price": round(float(base_price), 2),
+                  "latest_price": round(float(latest_price), 2),
+                  "latest_market_cap": round(float(latest_cap), 2),
+                  "latest_weight_percent": round(float(latest_cap / latest_total * 100), 2)
+              })
 
           jst = timezone(timedelta(hours=9))
 
@@ -125,6 +138,8 @@ jobs:
               "base_start": base_start,
               "base_date": base_date.strftime("%Y-%m-%d"),
               "base_value": 100,
+              "latest_date": latest_date.strftime("%Y-%m-%d"),
+              "latest_value": round(float(latest_value), 2),
               "updated_at": datetime.now(jst).strftime("%Y-%m-%d %H:%M:%S JST"),
               "stocks": list(stocks.keys()),
               "shares": {
@@ -132,6 +147,7 @@ jobs:
                   for ticker in tickers
               },
               "latest_weights_percent": weights,
+              "components": components,
               "daily": convert(om_daily),
               "weekly": convert(om_weekly),
               "monthly": convert(om_monthly)
@@ -140,6 +156,9 @@ jobs:
           with open("data.json", "w", encoding="utf-8") as f:
               json.dump(result, f, ensure_ascii=False, indent=2)
 
+          print("base_date:", base_date.strftime("%Y-%m-%d"))
+          print("latest_date:", latest_date.strftime("%Y-%m-%d"))
+          print("latest_value:", round(float(latest_value), 2))
           print("data.json created")
           EOF
 
