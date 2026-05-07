@@ -2,7 +2,7 @@ name: Update O&M Index
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: "0 7 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -19,49 +19,70 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install packages
-        run: pip install yfinance pandas
-
-      - name: Create data
         run: |
-          python <<EOF
-          import yfinance as yf
-          import pandas as pd
+          pip install yfinance pandas
+
+      - name: Create data.json
+        run: |
+          python <<'EOF'
           import json
+          from datetime import datetime, timezone, timedelta
+          import pandas as pd
+          import yfinance as yf
 
-          stocks = [
-              "2267.T",
-              "2897.T",
-              "2502.T",
-              "9616.T",
-              "4204.T",
-              "8111.T",
-              "4901.T",
-              "3687.T"
-          ]
-
-          data = yf.download(
-              stocks,
-              period="6mo"
-          )["Close"]
-
-          data["O&M"] = data.mean(axis=1)
-
-          result = {
-              "labels": data.index.strftime("%Y-%m-%d").tolist(),
-              "values": data["O&M"].round(2).tolist()
+          stocks = {
+              "ヤクルト本社": "2267.T",
+              "日清食品HD": "2897.T",
+              "アサヒGHD": "2502.T",
+              "共立メンテナンス": "9616.T",
+              "積水化学工業": "4204.T",
+              "ゴールドウイン": "8111.T",
+              "富士フイルムHD": "4901.T",
+              "フィックスターズ": "3687.T"
           }
 
-          with open("data.json", "w") as f:
-              json.dump(result, f)
+          raw = yf.download(
+              list(stocks.values()),
+              period="2y",
+              interval="1d",
+              auto_adjust=False,
+              progress=False,
+              threads=True
+          )
+
+          close = raw["Close"].dropna(how="any")
+          om_daily = close.mean(axis=1)
+          om_weekly = om_daily.resample("W-FRI").last().dropna()
+          om_monthly = om_daily.resample("ME").last().dropna()
+
+          def convert(series):
+              return {
+                  "labels": series.index.strftime("%Y-%m-%d").tolist(),
+                  "values": [round(float(v), 2) for v in series.tolist()]
+              }
+
+          jst = timezone(timedelta(hours=9))
+
+          result = {
+              "name": "O&M Index",
+              "updated_at": datetime.now(jst).strftime("%Y-%m-%d %H:%M:%S JST"),
+              "stocks": list(stocks.keys()),
+              "daily": convert(om_daily),
+              "weekly": convert(om_weekly),
+              "monthly": convert(om_monthly)
+          }
+
+          with open("data.json", "w", encoding="utf-8") as f:
+              json.dump(result, f, ensure_ascii=False, indent=2)
           EOF
 
-      - name: Commit files
+      - name: Commit data.json
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add data.json
-          git commit -m "update data" || echo "no changes"
+          git commit -m "Update O&M data" || echo "No changes"
           git push
