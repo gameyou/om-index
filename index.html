@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>O&M Index</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:sans-serif;
+    padding:20px;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+.container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+}
+
+canvas{
+    background:#1b1b1b;
+    border-radius:12px;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>O&M Index</h1>
+    <canvas id="chart"></canvas>
+</div>
+
+<script>
+
+const stocks = [
+    "2267.T",
+    "2897.T",
+    "2502.T",
+    "9616.T",
+    "4204.T",
+    "8111.T",
+    "4901.T",
+    "3687.T"
+];
+
+async function loadData(){
+
+    const results = [];
+
+    for(const stock of stocks){
+
+        const url =
+        `https://query1.finance.yahoo.com/v8/finance/chart/${stock}?range=6mo&interval=1d`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const prices =
+        data.chart.result[0].indicators.quote[0].close;
+
+        results.push(prices);
+    }
+
+    const avg = [];
+
+    for(let i=0;i<results[0].length;i++){
+
+        let sum = 0;
+        let count = 0;
+
+        for(let j=0;j<results.length;j++){
+
+            const value = results[j][i];
+
+            if(value != null){
+                sum += value;
+                count++;
+            }
+        }
+
+        avg.push(sum / count);
+    }
+
+    new Chart(
+        document.getElementById("chart"),
+        {
+            type:"line",
+            data:{
+                labels:avg.map((_,i)=>i+1),
+                datasets:[{
+                    label:"O&M",
+                    data:avg
+                }]
+            },
+            options:{
+                responsive:true
+            }
+        }
+    );
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
