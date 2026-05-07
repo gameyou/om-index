@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>O&M Index</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 body{
   margin:0;
@@ -17,17 +18,25 @@ body{
   max-width:1100px;
   margin:auto;
 }
-canvas{
+.chart-box{
   background:#1b1b1b;
   border-radius:12px;
-  padding:16px;
+  padding:20px;
+  height:520px;
+}
+canvas{
+  width:100% !important;
+  height:100% !important;
 }
 </style>
 </head>
+
 <body>
 <div class="container">
   <h1>O&M Index</h1>
-  <canvas id="chart"></canvas>
+  <div class="chart-box">
+    <canvas id="chart"></canvas>
+  </div>
 </div>
 
 <script>
@@ -43,17 +52,27 @@ async function loadChart(){
         label: "O&M",
         data: data.values,
         borderWidth: 2,
-        pointRadius: 0
+        pointRadius: 0,
+        tension: 0.2
       }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
-        x: { ticks: { color: "#ccc" } },
-        y: { ticks: { color: "#ccc" } }
+        x: {
+          ticks: { color: "#ccc", maxTicksLimit: 10 },
+          grid: { color: "#333" }
+        },
+        y: {
+          ticks: { color: "#ccc" },
+          grid: { color: "#333" }
+        }
       },
       plugins: {
-        legend: { labels: { color: "#fff" } }
+        legend: {
+          labels: { color: "#fff" }
+        }
       }
     }
   });
