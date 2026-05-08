@@ -5,8 +5,8 @@
   "base_date": "2025-01-06",
   "base_value": 100,
   "latest_date": "2026-05-08",
-  "latest_value": 90.0,
-  "updated_at": "2026-05-08 15:34:03 JST",
+  "latest_value": 90.09,
+  "updated_at": "2026-05-08 17:21:00 JST",
   "stocks": [
     "ヤクルト本社",
     "日清食品HD",
@@ -28,9 +28,9 @@
     "フィックスターズ": 32252858
   },
   "latest_weights_percent": {
-    "ヤクルト本社": 9.42,
-    "日清食品HD": 8.84,
-    "アサヒGHD": 24.76,
+    "ヤクルト本社": 9.44,
+    "日清食品HD": 8.85,
+    "アサヒGHD": 24.73,
     "共立メンテナンス": 2.32,
     "積水化学工業": 10.54,
     "ゴールドウイン": 3.35,
@@ -43,35 +43,35 @@
       "ticker": "2267.T",
       "shares": 292104288,
       "base_price": 2941.0,
-      "latest_price": 2913.5,
-      "latest_market_cap": 851045843088.0,
-      "latest_weight_percent": 9.42
+      "latest_price": 2924.5,
+      "latest_market_cap": 854258990256.0,
+      "latest_weight_percent": 9.44
     },
     {
       "name": "日清食品HD",
       "ticker": "2897.T",
       "shares": 287057156,
       "base_price": 3759.0,
-      "latest_price": 2783.0,
-      "latest_market_cap": 798880065148.0,
-      "latest_weight_percent": 8.84
+      "latest_price": 2789.0,
+      "latest_market_cap": 800602408084.0,
+      "latest_weight_percent": 8.85
     },
     {
       "name": "アサヒGHD",
       "ticker": "2502.T",
       "shares": 1462866952,
       "base_price": 1609.5,
-      "latest_price": 1529.5,
-      "latest_market_cap": 2237455003084.0,
-      "latest_weight_percent": 24.76
+      "latest_price": 1529.0,
+      "latest_market_cap": 2236723569608.0,
+      "latest_weight_percent": 24.73
     },
     {
       "name": "共立メンテナンス",
       "ticker": "9616.T",
       "shares": 87730913,
       "base_price": 2911.5,
-      "latest_price": 2389.5,
-      "latest_market_cap": 209633016613.5,
+      "latest_price": 2393.5,
+      "latest_market_cap": 209983940265.5,
       "latest_weight_percent": 2.32
     },
     {
@@ -79,8 +79,8 @@
       "ticker": "4204.T",
       "shares": 403705986,
       "base_price": 2678.0,
-      "latest_price": 2360.0,
-      "latest_market_cap": 952746126960.0,
+      "latest_price": 2361.0,
+      "latest_market_cap": 953149832946.0,
       "latest_weight_percent": 10.54
     },
     {
@@ -88,8 +88,8 @@
       "ticker": "8111.T",
       "shares": 136740731,
       "base_price": 2874.67,
-      "latest_price": 2213.0,
-      "latest_market_cap": 302607237703.0,
+      "latest_price": 2215.5,
+      "latest_market_cap": 302949089530.5,
       "latest_weight_percent": 3.35
     },
     {
@@ -97,8 +97,8 @@
       "ticker": "4901.T",
       "shares": 1205328866,
       "base_price": 3277.0,
-      "latest_price": 3020.0,
-      "latest_market_cap": 3640093175320.0,
+      "latest_price": 3023.0,
+      "latest_market_cap": 3643709161918.0,
       "latest_weight_percent": 40.28
     },
     {
@@ -106,8 +106,8 @@
       "ticker": "3687.T",
       "shares": 32252858,
       "base_price": 2117.0,
-      "latest_price": 1360.0,
-      "latest_market_cap": 43863886880.0,
+      "latest_price": 1367.0,
+      "latest_market_cap": 44089656886.0,
       "latest_weight_percent": 0.49
     }
   ],
@@ -764,7 +764,7 @@
       88.2,
       89.14,
       89.54,
-      90.0
+      90.09
     ]
   },
   "weekly": {
@@ -910,7 +910,7 @@
       94.39,
       88.89,
       89.14,
-      90.0
+      90.09
     ]
   },
   "monthly": {
@@ -950,7 +950,7 @@
       99.19,
       91.04,
       88.2,
-      90.0
+      90.09
     ]
   }
 }
