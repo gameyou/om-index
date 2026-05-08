@@ -2,11 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
 
 <title>O&M Index</title>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
 
 <style>
@@ -16,6 +22,7 @@ body{
     background:#0b0b0b;
     color:white;
     font-family:Arial,sans-serif;
+    touch-action:none;
 }
 
 .container{
@@ -357,15 +364,20 @@ function drawChart(period){
                     },
 
                     zoom:{
+
+                        mode:'x',
+
                         pinch:{
                             enabled:true
                         },
 
-                        wheel:{
+                        drag:{
                             enabled:false
                         },
 
-                        mode:'x'
+                        wheel:{
+                            enabled:false
+                        }
                     }
                 }
 
@@ -390,6 +402,7 @@ function drawChart(period){
                     },
 
                     grid:{
+
                         color:(ctx)=>{
 
                             if(ctx.tick.value === 100){
