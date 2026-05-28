@@ -4,9 +4,9 @@
   "base_start": "2025-01-01",
   "base_date": "2025-01-06",
   "base_value": 100,
-  "latest_date": "2026-05-27",
-  "latest_value": 91.26,
-  "updated_at": "2026-05-27 19:55:07 JST",
+  "latest_date": "2026-05-28",
+  "latest_value": 92.75,
+  "updated_at": "2026-05-28 19:55:24 JST",
   "stocks": [
     "ヤクルト本社",
     "日清食品HD",
@@ -28,14 +28,14 @@
     "フィックスターズ": 32252858
   },
   "latest_weights_percent": {
-    "ヤクルト本社": 8.71,
-    "日清食品HD": 8.25,
-    "アサヒGHD": 24.23,
-    "共立メンテナンス": 2.38,
-    "積水化学工業": 10.13,
+    "ヤクルト本社": 8.53,
+    "日清食品HD": 8.24,
+    "アサヒGHD": 24.05,
+    "共立メンテナンス": 2.34,
+    "積水化学工業": 9.94,
     "ゴールドウイン": 3.13,
-    "富士フイルムHD": 42.41,
-    "フィックスターズ": 0.75
+    "富士フイルムHD": 43.0,
+    "フィックスターズ": 0.77
   },
   "components": [
     {
@@ -43,53 +43,53 @@
       "ticker": "2267.T",
       "shares": 292104288,
       "base_price": 2941.0,
-      "latest_price": 2733.5,
-      "latest_market_cap": 798467071248.0,
-      "latest_weight_percent": 8.71
+      "latest_price": 2720.5,
+      "latest_market_cap": 794669715504.0,
+      "latest_weight_percent": 8.53
     },
     {
       "name": "日清食品HD",
       "ticker": "2897.T",
       "shares": 287057156,
       "base_price": 3759.0,
-      "latest_price": 2634.0,
-      "latest_market_cap": 756108548904.0,
-      "latest_weight_percent": 8.25
+      "latest_price": 2672.5,
+      "latest_market_cap": 767160249410.0,
+      "latest_weight_percent": 8.24
     },
     {
       "name": "アサヒGHD",
       "ticker": "2502.T",
       "shares": 1462866952,
       "base_price": 1609.5,
-      "latest_price": 1517.5,
-      "latest_market_cap": 2219900599660.0,
-      "latest_weight_percent": 24.23
+      "latest_price": 1531.0,
+      "latest_market_cap": 2239649303512.0,
+      "latest_weight_percent": 24.05
     },
     {
       "name": "共立メンテナンス",
       "ticker": "9616.T",
       "shares": 87730913,
       "base_price": 2911.5,
-      "latest_price": 2490.0,
-      "latest_market_cap": 218449973370.0,
-      "latest_weight_percent": 2.38
+      "latest_price": 2488.5,
+      "latest_market_cap": 218318377000.5,
+      "latest_weight_percent": 2.34
     },
     {
       "name": "積水化学工業",
       "ticker": "4204.T",
       "shares": 403705986,
       "base_price": 2678.0,
-      "latest_price": 2299.0,
-      "latest_market_cap": 928120061814.0,
-      "latest_weight_percent": 10.13
+      "latest_price": 2292.5,
+      "latest_market_cap": 925495972905.0,
+      "latest_weight_percent": 9.94
     },
     {
       "name": "ゴールドウイン",
       "ticker": "8111.T",
       "shares": 136740731,
       "base_price": 2874.67,
-      "latest_price": 2097.5,
-      "latest_market_cap": 286813683272.5,
+      "latest_price": 2129.5,
+      "latest_market_cap": 291189386664.5,
       "latest_weight_percent": 3.13
     },
     {
@@ -97,18 +97,18 @@
       "ticker": "4901.T",
       "shares": 1205328866,
       "base_price": 3277.0,
-      "latest_price": 3224.0,
-      "latest_market_cap": 3885980263984.0,
-      "latest_weight_percent": 42.41
+      "latest_price": 3322.0,
+      "latest_market_cap": 4004102492852.0,
+      "latest_weight_percent": 43.0
     },
     {
       "name": "フィックスターズ",
       "ticker": "3687.T",
       "shares": 32252858,
       "base_price": 2117.0,
-      "latest_price": 2140.0,
-      "latest_market_cap": 69021116120.0,
-      "latest_weight_percent": 0.75
+      "latest_price": 2217.0,
+      "latest_market_cap": 71504586186.0,
+      "latest_weight_percent": 0.77
     }
   ],
   "daily": {
@@ -450,7 +450,8 @@
       "2026-05-22",
       "2026-05-25",
       "2026-05-26",
-      "2026-05-27"
+      "2026-05-27",
+      "2026-05-28"
     ],
     "values": [
       100.0,
@@ -790,7 +791,8 @@
       91.73,
       90.68,
       89.86,
-      91.26
+      91.26,
+      92.75
     ]
   },
   "weekly": {
@@ -942,7 +944,7 @@
       90.09,
       90.37,
       91.73,
-      91.26
+      92.75
     ]
   },
   "monthly": {
@@ -982,7 +984,7 @@
       99.19,
       91.04,
       88.2,
-      91.26
+      92.75
     ]
   }
 }
