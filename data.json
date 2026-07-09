@@ -4,9 +4,9 @@
   "base_start": "2025-01-01",
   "base_date": "2025-01-06",
   "base_value": 100,
-  "latest_date": "2026-07-08",
-  "latest_value": 101.06,
-  "updated_at": "2026-07-08 18:24:29 JST",
+  "latest_date": "2026-07-09",
+  "latest_value": 99.85,
+  "updated_at": "2026-07-09 19:23:20 JST",
   "stocks": [
     "ヤクルト本社",
     "日清食品HD",
@@ -28,14 +28,14 @@
     "フィックスターズ": 32252858
   },
   "latest_weights_percent": {
-    "ヤクルト本社": 8.41,
-    "日清食品HD": 8.26,
-    "アサヒGHD": 23.94,
-    "共立メンテナンス": 2.63,
-    "積水化学工業": 10.49,
-    "ゴールドウイン": 3.11,
-    "富士フイルムHD": 42.46,
-    "フィックスターズ": 0.7
+    "ヤクルト本社": 8.26,
+    "日清食品HD": 8.29,
+    "アサヒGHD": 23.73,
+    "共立メンテナンス": 2.57,
+    "積水化学工業": 10.55,
+    "ゴールドウイン": 3.08,
+    "富士フイルムHD": 42.8,
+    "フィックスターズ": 0.71
   },
   "components": [
     {
@@ -43,72 +43,72 @@
       "ticker": "2267.T",
       "shares": 292104288,
       "base_price": 2941.0,
-      "latest_price": 2920.0,
-      "latest_market_cap": 852944520960.0,
-      "latest_weight_percent": 8.41
+      "latest_price": 2836.5,
+      "latest_market_cap": 828553812912.0,
+      "latest_weight_percent": 8.26
     },
     {
       "name": "日清食品HD",
       "ticker": "2897.T",
       "shares": 287057156,
       "base_price": 3759.0,
-      "latest_price": 2919.0,
-      "latest_market_cap": 837919838364.0,
-      "latest_weight_percent": 8.26
+      "latest_price": 2896.0,
+      "latest_market_cap": 831317523776.0,
+      "latest_weight_percent": 8.29
     },
     {
       "name": "アサヒGHD",
       "ticker": "2502.T",
       "shares": 1462866952,
       "base_price": 1609.5,
-      "latest_price": 1660.5,
-      "latest_market_cap": 2429090573796.0,
-      "latest_weight_percent": 23.94
+      "latest_price": 1626.5,
+      "latest_market_cap": 2379353097428.0,
+      "latest_weight_percent": 23.73
     },
     {
       "name": "共立メンテナンス",
       "ticker": "9616.T",
       "shares": 87730913,
       "base_price": 2911.5,
-      "latest_price": 3044.0,
-      "latest_market_cap": 267052899172.0,
-      "latest_weight_percent": 2.63
+      "latest_price": 2939.0,
+      "latest_market_cap": 257841153307.0,
+      "latest_weight_percent": 2.57
     },
     {
       "name": "積水化学工業",
       "ticker": "4204.T",
       "shares": 403705986,
       "base_price": 2678.0,
-      "latest_price": 2637.5,
-      "latest_market_cap": 1064774538075.0,
-      "latest_weight_percent": 10.49
+      "latest_price": 2619.0,
+      "latest_market_cap": 1057305977334.0,
+      "latest_weight_percent": 10.55
     },
     {
       "name": "ゴールドウイン",
       "ticker": "8111.T",
       "shares": 136740731,
       "base_price": 2874.67,
-      "latest_price": 2311.0,
-      "latest_market_cap": 316007829341.0,
-      "latest_weight_percent": 3.11
+      "latest_price": 2259.5,
+      "latest_market_cap": 308965681694.5,
+      "latest_weight_percent": 3.08
     },
     {
       "name": "富士フイルムHD",
       "ticker": "4901.T",
       "shares": 1205328866,
       "base_price": 3277.0,
-      "latest_price": 3574.0,
-      "latest_market_cap": 4307845367084.0,
-      "latest_weight_percent": 42.46
+      "latest_price": 3560.0,
+      "latest_market_cap": 4290970762960.0,
+      "latest_weight_percent": 42.8
     },
     {
       "name": "フィックスターズ",
       "ticker": "3687.T",
       "shares": 32252858,
       "base_price": 2117.0,
-      "latest_price": 2192.0,
-      "latest_market_cap": 70698264736.0,
-      "latest_weight_percent": 0.7
+      "latest_price": 2201.0,
+      "latest_market_cap": 70988540458.0,
+      "latest_weight_percent": 0.71
     }
   ],
   "daily": {
@@ -480,7 +480,8 @@
       "2026-07-03",
       "2026-07-06",
       "2026-07-07",
-      "2026-07-08"
+      "2026-07-08",
+      "2026-07-09"
     ],
     "values": [
       100.0,
@@ -850,7 +851,8 @@
       99.57,
       100.99,
       101.42,
-      101.06
+      101.06,
+      99.85
     ]
   },
   "weekly": {
@@ -1014,7 +1016,7 @@
       94.58,
       96.54,
       99.57,
-      101.06
+      99.85
     ]
   },
   "monthly": {
@@ -1058,7 +1060,7 @@
       88.2,
       92.67,
       97.12,
-      101.06
+      99.85
     ]
   }
 }
