@@ -4,9 +4,9 @@
   "base_start": "2025-01-01",
   "base_date": "2025-01-06",
   "base_value": 100,
-  "latest_date": "2026-07-09",
-  "latest_value": 99.85,
-  "updated_at": "2026-07-09 19:23:20 JST",
+  "latest_date": "2026-07-10",
+  "latest_value": 99.16,
+  "updated_at": "2026-07-10 19:22:07 JST",
   "stocks": [
     "ヤクルト本社",
     "日清食品HD",
@@ -28,14 +28,14 @@
     "フィックスターズ": 32252858
   },
   "latest_weights_percent": {
-    "ヤクルト本社": 8.26,
-    "日清食品HD": 8.29,
-    "アサヒGHD": 23.73,
-    "共立メンテナンス": 2.57,
-    "積水化学工業": 10.55,
+    "ヤクルト本社": 8.33,
+    "日清食品HD": 8.06,
+    "アサヒGHD": 23.23,
+    "共立メンテナンス": 2.55,
+    "積水化学工業": 10.58,
     "ゴールドウイン": 3.08,
-    "富士フイルムHD": 42.8,
-    "フィックスターズ": 0.71
+    "富士フイルムHD": 43.41,
+    "フィックスターズ": 0.75
   },
   "components": [
     {
@@ -43,53 +43,53 @@
       "ticker": "2267.T",
       "shares": 292104288,
       "base_price": 2941.0,
-      "latest_price": 2836.5,
-      "latest_market_cap": 828553812912.0,
-      "latest_weight_percent": 8.26
+      "latest_price": 2840.5,
+      "latest_market_cap": 829722230064.0,
+      "latest_weight_percent": 8.33
     },
     {
       "name": "日清食品HD",
       "ticker": "2897.T",
       "shares": 287057156,
       "base_price": 3759.0,
-      "latest_price": 2896.0,
-      "latest_market_cap": 831317523776.0,
-      "latest_weight_percent": 8.29
+      "latest_price": 2794.5,
+      "latest_market_cap": 802181222442.0,
+      "latest_weight_percent": 8.06
     },
     {
       "name": "アサヒGHD",
       "ticker": "2502.T",
       "shares": 1462866952,
       "base_price": 1609.5,
-      "latest_price": 1626.5,
-      "latest_market_cap": 2379353097428.0,
-      "latest_weight_percent": 23.73
+      "latest_price": 1581.0,
+      "latest_market_cap": 2312792651112.0,
+      "latest_weight_percent": 23.23
     },
     {
       "name": "共立メンテナンス",
       "ticker": "9616.T",
       "shares": 87730913,
       "base_price": 2911.5,
-      "latest_price": 2939.0,
-      "latest_market_cap": 257841153307.0,
-      "latest_weight_percent": 2.57
+      "latest_price": 2896.5,
+      "latest_market_cap": 254112589504.5,
+      "latest_weight_percent": 2.55
     },
     {
       "name": "積水化学工業",
       "ticker": "4204.T",
       "shares": 403705986,
       "base_price": 2678.0,
-      "latest_price": 2619.0,
-      "latest_market_cap": 1057305977334.0,
-      "latest_weight_percent": 10.55
+      "latest_price": 2609.5,
+      "latest_market_cap": 1053470770467.0,
+      "latest_weight_percent": 10.58
     },
     {
       "name": "ゴールドウイン",
       "ticker": "8111.T",
       "shares": 136740731,
       "base_price": 2874.67,
-      "latest_price": 2259.5,
-      "latest_market_cap": 308965681694.5,
+      "latest_price": 2241.5,
+      "latest_market_cap": 306504348536.5,
       "latest_weight_percent": 3.08
     },
     {
@@ -97,18 +97,18 @@
       "ticker": "4901.T",
       "shares": 1205328866,
       "base_price": 3277.0,
-      "latest_price": 3560.0,
-      "latest_market_cap": 4290970762960.0,
-      "latest_weight_percent": 42.8
+      "latest_price": 3586.0,
+      "latest_market_cap": 4322309313476.0,
+      "latest_weight_percent": 43.41
     },
     {
       "name": "フィックスターズ",
       "ticker": "3687.T",
       "shares": 32252858,
       "base_price": 2117.0,
-      "latest_price": 2201.0,
-      "latest_market_cap": 70988540458.0,
-      "latest_weight_percent": 0.71
+      "latest_price": 2329.0,
+      "latest_market_cap": 75116906282.0,
+      "latest_weight_percent": 0.75
     }
   ],
   "daily": {
@@ -481,7 +481,8 @@
       "2026-07-06",
       "2026-07-07",
       "2026-07-08",
-      "2026-07-09"
+      "2026-07-09",
+      "2026-07-10"
     ],
     "values": [
       100.0,
@@ -852,7 +853,8 @@
       100.99,
       101.42,
       101.06,
-      99.85
+      99.85,
+      99.16
     ]
   },
   "weekly": {
@@ -1016,7 +1018,7 @@
       94.58,
       96.54,
       99.57,
-      99.85
+      99.16
     ]
   },
   "monthly": {
@@ -1060,7 +1062,7 @@
       88.2,
       92.67,
       97.12,
-      99.85
+      99.16
     ]
   }
 }
