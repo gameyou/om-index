@@ -4,9 +4,9 @@
   "base_start": "2025-01-01",
   "base_date": "2025-01-06",
   "base_value": 100,
-  "latest_date": "2026-10-02",
-  "latest_value": 95.03,
-  "updated_at": "2026-10-06 00:32:53 JST",
+  "latest_date": "2026-10-06",
+  "latest_value": 96.94,
+  "updated_at": "2026-10-06 22:54:45 JST",
   "stocks": [
     "ヤクルト本社",
     "日清食品HD",
@@ -28,14 +28,14 @@
     "フィックスターズ": 32252858
   },
   "latest_weights_percent": {
-    "ヤクルト本社": 8.33,
-    "日清食品HD": 8.44,
-    "アサヒGHD": 24.1,
-    "共立メンテナンス": 2.91,
-    "積水化学工業": 10.57,
-    "ゴールドウイン": 3.01,
-    "富士フイルムHD": 41.86,
-    "フィックスターズ": 0.77
+    "ヤクルト本社": 8.2,
+    "日清食品HD": 8.39,
+    "アサヒGHD": 23.93,
+    "共立メンテナンス": 2.88,
+    "積水化学工業": 10.49,
+    "ゴールドウイン": 2.96,
+    "富士フイルムHD": 42.4,
+    "フィックスターズ": 0.74
   },
   "components": [
     {
@@ -43,72 +43,72 @@
       "ticker": "2267.T",
       "shares": 292104288,
       "base_price": 2941.0,
-      "latest_price": 2720.0,
-      "latest_market_cap": 794523663360.0,
-      "latest_weight_percent": 8.33
+      "latest_price": 2733.5,
+      "latest_market_cap": 798467071248.0,
+      "latest_weight_percent": 8.2
     },
     {
       "name": "日清食品HD",
       "ticker": "2897.T",
       "shares": 287057156,
       "base_price": 3759.0,
-      "latest_price": 2806.5,
-      "latest_market_cap": 805625908314.0,
-      "latest_weight_percent": 8.44
+      "latest_price": 2845.0,
+      "latest_market_cap": 816677608820.0,
+      "latest_weight_percent": 8.39
     },
     {
       "name": "アサヒGHD",
       "ticker": "2502.T",
       "shares": 1462866952,
       "base_price": 1609.5,
-      "latest_price": 1572.0,
-      "latest_market_cap": 2299626848544.0,
-      "latest_weight_percent": 24.1
+      "latest_price": 1592.5,
+      "latest_market_cap": 2329615621060.0,
+      "latest_weight_percent": 23.93
     },
     {
       "name": "共立メンテナンス",
       "ticker": "9616.T",
       "shares": 87730913,
       "base_price": 2911.5,
-      "latest_price": 3160.0,
-      "latest_market_cap": 277229685080.0,
-      "latest_weight_percent": 2.91
+      "latest_price": 3194.0,
+      "latest_market_cap": 280212536122.0,
+      "latest_weight_percent": 2.88
     },
     {
       "name": "積水化学工業",
       "ticker": "4204.T",
       "shares": 403705986,
       "base_price": 2678.0,
-      "latest_price": 2499.0,
-      "latest_market_cap": 1008861259014.0,
-      "latest_weight_percent": 10.57
+      "latest_price": 2529.0,
+      "latest_market_cap": 1020972438594.0,
+      "latest_weight_percent": 10.49
     },
     {
       "name": "ゴールドウイン",
       "ticker": "8111.T",
       "shares": 136740731,
       "base_price": 2874.67,
-      "latest_price": 2102.0,
-      "latest_market_cap": 287429016562.0,
-      "latest_weight_percent": 3.01
+      "latest_price": 2106.5,
+      "latest_market_cap": 288044349851.5,
+      "latest_weight_percent": 2.96
     },
     {
       "name": "富士フイルムHD",
       "ticker": "4901.T",
       "shares": 1205328866,
       "base_price": 3277.0,
-      "latest_price": 3314.0,
-      "latest_market_cap": 3994459861924.0,
-      "latest_weight_percent": 41.86
+      "latest_price": 3424.0,
+      "latest_market_cap": 4127046037184.0,
+      "latest_weight_percent": 42.4
     },
     {
       "name": "フィックスターズ",
       "ticker": "3687.T",
       "shares": 32252858,
       "base_price": 2117.0,
-      "latest_price": 2283.0,
-      "latest_market_cap": 73633274814.0,
-      "latest_weight_percent": 0.77
+      "latest_price": 2247.0,
+      "latest_market_cap": 72472171926.0,
+      "latest_weight_percent": 0.74
     }
   ],
   "daily": {
@@ -537,7 +537,9 @@
       "2026-09-29",
       "2026-09-30",
       "2026-10-01",
-      "2026-10-02"
+      "2026-10-02",
+      "2026-10-05",
+      "2026-10-06"
     ],
     "values": [
       100.0,
@@ -964,7 +966,9 @@
       95.4,
       96.07,
       96.74,
-      95.03
+      95.03,
+      96.57,
+      96.94
     ]
   },
   "weekly": {
@@ -1059,7 +1063,8 @@
       "2026-09-11",
       "2026-09-18",
       "2026-09-25",
-      "2026-10-02"
+      "2026-10-02",
+      "2026-10-09"
     ],
     "values": [
       98.79,
@@ -1152,7 +1157,8 @@
       94.62,
       96.43,
       98.18,
-      95.03
+      95.03,
+      96.94
     ]
   },
   "monthly": {
@@ -1202,7 +1208,7 @@
       103.56,
       99.26,
       96.07,
-      95.03
+      96.94
     ]
   }
 }
